@@ -303,6 +303,7 @@ completion,test,update,update-readme-history,update-test-snapshot-files,version}
 [comment]: <> (✂✂✂ auto generated history start ✂✂✂)
 
 * [v0.4.1](https://github.com/jedie/mposcli/compare/v0.4.0...v0.4.1)
+  * 2026-03-08 - update README
   * 2026-02-27 - Use "--force" for pulling submodules to overwrite local changes
 * [v0.4.0](https://github.com/jedie/mposcli/compare/v0.3.0...v0.4.0)
   * 2026-02-24 - NEW command: "cp-app" to install/update internal_filesystem/apps
