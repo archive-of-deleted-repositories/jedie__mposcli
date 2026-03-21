@@ -83,7 +83,19 @@ class ReadmeTestCase(BaseTestCase):
 
         commands.discard('version')  # version is pseudo command, because the version always printed on every CLI call
         commands = sorted(commands)
-        self.assertEqual(commands, ['build', 'cp', 'cp-app', 'flash', 'run-desktop', 'update', 'update-submodules'])
+        self.assertEqual(
+            commands,
+            [
+                'build',
+                'cp',
+                'cp-app',
+                'flash',
+                'run-desktop',
+                'shell',
+                'update',
+                'update-submodules',
+            ],
+        )
 
         for command in commands:
             with self.subTest(command):
