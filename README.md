@@ -32,7 +32,8 @@ cd ~/MicroPythonOS
 
 [comment]: <> (✂✂✂ auto generated main help start ✂✂✂)
 ```
-usage: mposcli [-h] {build,cp,cp-app,flash,run-desktop,update,update-submodules,version}
+usage: mposcli [-h] {build,cp,cp-app,flash,run-desktop,shell,update,update-
+submodules,version}
 
 
 
@@ -59,6 +60,9 @@ usage: mposcli [-h] {build,cp,cp-app,flash,run-desktop,update,update-submodules,
 │                        opythonos.com/os-development/installing-on-esp32/               │
 │   • run-desktop        Run MicroPythonOS on desktop. see: https://docs.micropythonos.c │
 │                        om/getting-started/running/#running-on-desktop                  │
+│   • shell              Start a REPL shell connected to the device using mpremote.      │
+│                        Optional reset before starting the REPL. The goal it to try to  │
+│                        get a REPL in a loop until it works.                            │
 │   • update             Update MicroPythonOS repository. Assume that there is a         │
 │                        "origin" and/or "upstream" remote configured. Will also ask if  │
 │                        you want to update the submodules as well, which is             │
@@ -200,6 +204,26 @@ started/running/#running-on-desktop
 
 
 
+## mposcli shell
+
+[comment]: <> (✂✂✂ auto generated shell start ✂✂✂)
+```
+usage: mposcli shell [-h] [--reset | --no-reset] [-v]
+
+Start a REPL shell connected to the device using mpremote. Optional reset before starting
+the REPL. The goal it to try to get a REPL in a loop until it works.
+
+╭─ options ────────────────────────────────────────────────────────────────────────╮
+│ -h, --help           show this help message and exit                             │
+│ --reset, --no-reset  Reset the device before starting the REPL? (default: False) │
+│ -v, --verbosity      Verbosity level; e.g.: -v, -vv, -vvv, etc. (repeatable)     │
+╰──────────────────────────────────────────────────────────────────────────────────╯
+```
+[comment]: <> (✂✂✂ auto generated shell end ✂✂✂)
+
+
+
+
 ## mposcli update
 
 
@@ -304,6 +328,8 @@ completion,test,update,update-readme-history,update-test-snapshot-files,version}
 
 [comment]: <> (✂✂✂ auto generated history start ✂✂✂)
 
+* [v0.6.0](https://github.com/jedie/mposcli/compare/v0.5.0...v0.6.0)
+  * 2026-03-21 - NEW: "shell" to start the REPL
 * [v0.5.0](https://github.com/jedie/mposcli/compare/v0.4.1...v0.5.0)
   * 2026-03-08 - update README
   * 2026-03-05 - Enhance "cp" command and auto restart "mpremote repl"
@@ -317,13 +343,13 @@ completion,test,update,update-readme-history,update-test-snapshot-files,version}
   * 2026-02-23 - Update requirements and fix code style
   * 2026-02-23 - "build" command: target as positional argument
   * 2026-02-23 - Expand "cp" command and allow optional filesystem path
+
+<details><summary>Expand older history entries ...</summary>
+
 * [v0.3.0](https://github.com/jedie/mposcli/compare/v0.2.0...v0.3.0)
   * 2026-02-18 - Add "update" beside "update-submodules"
   * 2026-02-17 - Update requirements
   * 2026-02-16 - update README
-
-<details><summary>Expand older history entries ...</summary>
-
 * [v0.2.0](https://github.com/jedie/mposcli/compare/v0.1.0...v0.2.0)
   * 2026-02-16 - New CLI command: "cp" with convenience features.
   * 2026-02-16 - New command: "flash" with file selector
