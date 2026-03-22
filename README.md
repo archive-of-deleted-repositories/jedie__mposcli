@@ -328,6 +328,8 @@ completion,test,update,update-readme-history,update-test-snapshot-files,version}
 
 [comment]: <> (✂✂✂ auto generated history start ✂✂✂)
 
+* [**dev**](https://github.com/jedie/mposcli/compare/v0.6.0...main)
+  * 2026-03-22 - Use "retry loop" for copy, too
 * [v0.6.0](https://github.com/jedie/mposcli/compare/v0.5.0...v0.6.0)
   * 2026-03-21 - NEW: "shell" to start the REPL
 * [v0.5.0](https://github.com/jedie/mposcli/compare/v0.4.1...v0.5.0)
@@ -337,15 +339,15 @@ completion,test,update,update-readme-history,update-test-snapshot-files,version}
   * 2026-03-03 - flash command: use port auto detection as default
 * [v0.4.1](https://github.com/jedie/mposcli/compare/v0.4.0...v0.4.1)
   * 2026-02-27 - Use "--force" for pulling submodules to overwrite local changes
+
+<details><summary>Expand older history entries ...</summary>
+
 * [v0.4.0](https://github.com/jedie/mposcli/compare/v0.3.0...v0.4.0)
   * 2026-02-24 - NEW command: "cp-app" to install/update internal_filesystem/apps
   * 2026-02-24 - Log skipped files
   * 2026-02-23 - Update requirements and fix code style
   * 2026-02-23 - "build" command: target as positional argument
   * 2026-02-23 - Expand "cp" command and allow optional filesystem path
-
-<details><summary>Expand older history entries ...</summary>
-
 * [v0.3.0](https://github.com/jedie/mposcli/compare/v0.2.0...v0.3.0)
   * 2026-02-18 - Add "update" beside "update-submodules"
   * 2026-02-17 - Update requirements

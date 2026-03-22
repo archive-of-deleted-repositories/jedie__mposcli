@@ -14,7 +14,7 @@ from mposcli.cli_app import app
 from mposcli.mpos_utils import get_mpos_path
 from mposcli.tools import get_mpremote_bin
 from mposcli.user_input import choose_newest_modified_directory, get_newest_files
-from mposcli.utilities.mpremote import MpOsPathResolver, start_mpremote_repl
+from mposcli.utilities.mpremote import MpOsPathResolver, check_call_loop, start_mpremote_repl
 
 
 logger = logging.getLogger(__name__)
@@ -79,12 +79,11 @@ def cp(
     else:
         print(f'Copying file "[bold]{local_path_str}[/bold]" to device at "[bold]{remote_str}[/bold]" ...')
 
-    verbose_check_call(
-        *popenargs,
-        'cp',
-        local_path_str,
-        remote_str,
-        verbose=True,
+    popenargs += ('cp', local_path_str, remote_str)
+    check_call_loop(
+        popen_args=popenargs,
+        max_try=10,
+        wait_time=1,
         cwd=mpos_path,
         text=None,
     )

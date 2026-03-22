@@ -45,20 +45,25 @@ class MpOsPathResolver:
         return local_path_str, remote_str
 
 
-def start_mpremote_repl(max_try=10, wait_time=1):
-    print('Starting mpremote REPL...')
-    time.sleep(wait_time)
-    mpremote_bin = get_mpremote_bin()
-
-    popen_args = (mpremote_bin, 'repl')
-
+def check_call_loop(*, popen_args, max_try=10, wait_time=1, **popen_kwargs):
     for try_count in range(max_try):
         print(f'\n+ {shlex.join(str(arg) for arg in popen_args)}')
         try:
-            return subprocess.check_call(popen_args)
+            return subprocess.check_call(popen_args, **popen_kwargs)
         except subprocess.CalledProcessError as err:
             print(
                 f'[yellow]mpremote finished with [red]exit code {err.returncode!r}[/red]'
                 f' Retrying in {wait_time} seconds... (try {try_count + 1}/{max_try})'
             )
             time.sleep(wait_time)
+    raise RuntimeError(f'mpremote failed after {max_try} attempts')
+
+
+def start_mpremote_repl(max_try=10, wait_time=1):
+    print('Starting mpremote REPL...')
+    mpremote_bin = get_mpremote_bin()
+    return check_call_loop(
+        popen_args=(mpremote_bin, 'repl'),
+        max_try=max_try,
+        wait_time=wait_time,
+    )
