@@ -145,9 +145,11 @@ def cp_app(
         remote_path = f':/apps/{app.name}'
 
     popenargs += (local_path, remote_path)
-    verbose_check_call(
-        *popenargs,
-        verbose=True,
+
+    check_call_loop(
+        popen_args=popenargs,
+        max_try=10,
+        wait_time=1,
         cwd=mpos_path,
         text=None,
     )
@@ -163,12 +165,4 @@ def cp_app(
         )
 
     if repl:
-        time.sleep(1)
-        verbose_check_call(
-            mpremote_bin,
-            'repl',
-            verbose=True,
-            cwd=mpos_path,
-            timeout=None,
-            text=None,
-        )
+        start_mpremote_repl()
