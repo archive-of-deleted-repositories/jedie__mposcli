@@ -7,11 +7,11 @@ import tyro
 from bx_py_utils.path import assert_is_dir
 from cli_base.cli_tools.subprocess_utils import verbose_check_call
 from cli_base.cli_tools.verbosity import setup_logging
-from cli_base.tyro_commands import TyroVerbosityArgType
 from rich import print
 
 from mposcli.cli_app import app
 from mposcli.mpos_utils import get_mpos_path
+from mposcli.shared_tyro import DEFAULT_VERBOSITY, TyroVerbosityArgType
 from mposcli.tools import get_mpremote_bin
 from mposcli.user_input import choose_newest_modified_directory, get_newest_files
 from mposcli.utilities.mpremote import MpOsPathResolver, check_call_loop, start_mpremote_repl
@@ -39,7 +39,7 @@ def cp(
         bool,
         tyro.conf.arg(help='After flashing/verify start REPL with mpremote to see the output of the device?'),
     ] = True,
-    verbosity: TyroVerbosityArgType = 1,
+    verbosity: TyroVerbosityArgType = DEFAULT_VERBOSITY,
 ):
     """
     Copy/update internal_filesystem/lib/mpos files to the device via "mpremote fs cp".
@@ -112,7 +112,7 @@ def cp_app(
         bool,
         tyro.conf.arg(help='After flashing/verify start REPL with mpremote to see the output of the device?'),
     ] = True,
-    verbosity: TyroVerbosityArgType = 1,
+    verbosity: TyroVerbosityArgType = DEFAULT_VERBOSITY,
 ):
     """
     Copy/update internal_filesystem/apps to the device via "mpremote fs cp".

@@ -5,10 +5,10 @@ from typing import Annotated
 import tyro
 from cli_base.cli_tools.subprocess_utils import verbose_check_call
 from cli_base.cli_tools.verbosity import setup_logging
-from cli_base.tyro_commands import TyroVerbosityArgType
 
 from mposcli.cli_app import app
 from mposcli.mpos_utils import get_mpos_path
+from mposcli.shared_tyro import DEFAULT_VERBOSITY, TyroVerbosityArgType
 from mposcli.tools import get_mpremote_bin
 from mposcli.utilities.mpremote import start_mpremote_repl
 
@@ -22,7 +22,7 @@ def shell(
         bool,
         tyro.conf.arg(help='Reset the device before starting the REPL?'),
     ] = False,
-    verbosity: TyroVerbosityArgType = 1,
+    verbosity: TyroVerbosityArgType = DEFAULT_VERBOSITY,
 ):
     """
     Start a REPL shell connected to the device using mpremote. Optional reset before starting the REPL.

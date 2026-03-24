@@ -9,12 +9,12 @@ import tyro
 from bx_py_utils.path import assert_is_file
 from cli_base.cli_tools.subprocess_utils import verbose_check_call
 from cli_base.cli_tools.verbosity import setup_logging
-from cli_base.tyro_commands import TyroVerbosityArgType
 from rich import print
 
 from mposcli.cli_app import app
 from mposcli.fs_utils import list_executables
 from mposcli.mpos_utils import get_mpos_path
+from mposcli.shared_tyro import DEFAULT_VERBOSITY, TyroVerbosityArgType
 from mposcli.user_input import file_chooser
 
 
@@ -40,7 +40,7 @@ def run_desktop(
             ' If omitted, shows a file chooser to select one from the lvgl_micropython build directory.'
         ),
     ] = None,
-    verbosity: TyroVerbosityArgType = 1,
+    verbosity: TyroVerbosityArgType = DEFAULT_VERBOSITY,
 ):
     """
     Run MicroPythonOS on desktop.

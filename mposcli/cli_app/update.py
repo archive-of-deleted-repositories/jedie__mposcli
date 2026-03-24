@@ -5,11 +5,11 @@ from typing import Annotated
 import tyro
 from cli_base.cli_tools.git import Git
 from cli_base.cli_tools.verbosity import setup_logging
-from cli_base.tyro_commands import TyroVerbosityArgType
 from rich import print
 
 from mposcli.cli_app import app
 from mposcli.mpos_utils import get_mpos_path
+from mposcli.shared_tyro import DEFAULT_VERBOSITY, TyroVerbosityArgType
 
 
 logger = logging.getLogger(__name__)
@@ -44,7 +44,7 @@ def update_submodules(
         bool,
         tyro.conf.arg(help='Submodules only a shallow clone with --depth=1?'),
     ] = False,
-    verbosity: TyroVerbosityArgType = 1,
+    verbosity: TyroVerbosityArgType = DEFAULT_VERBOSITY,
 ):
     """
     Updates MicroPythonOS git submodules only.
@@ -67,7 +67,7 @@ def update(
         bool,
         tyro.conf.arg(help='Submodules only a shallow clone with --depth=1?'),
     ] = False,
-    verbosity: TyroVerbosityArgType = 1,
+    verbosity: TyroVerbosityArgType = DEFAULT_VERBOSITY,
 ):
     """
     Update MicroPythonOS repository. Assume that there is a "origin" and/or "upstream" remote configured.
