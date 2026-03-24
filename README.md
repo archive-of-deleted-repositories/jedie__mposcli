@@ -341,6 +341,7 @@ completion,test,update,update-readme-history,update-test-snapshot-files,version}
 [comment]: <> (✂✂✂ auto generated history start ✂✂✂)
 
 * [v0.7.1](https://github.com/jedie/mposcli/compare/v0.7.0...v0.7.1)
+  * 2026-03-24 - Warn if non executeable build found
   * 2026-03-24 - Set log level to WARNING as default
 * [v0.7.0](https://github.com/jedie/mposcli/compare/v0.6.0...v0.7.0)
   * 2026-03-24 - Safe diskspace in mposcli update / update-submodules

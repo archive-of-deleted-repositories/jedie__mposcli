@@ -22,5 +22,5 @@ def list_executables(directory: Path) -> list[Path]:
             if os.access(entry, os.X_OK):
                 executables.append(entry)
             else:
-                logger.info('Skipping non-executable file: %s', entry)
+                logger.warning('%s is not executable! (Hint: "chmod +x <filename>")', entry)
     return executables
