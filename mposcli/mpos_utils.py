@@ -16,7 +16,7 @@ def get_mpos_path() -> Path:
     current_path = Path().cwd().resolve()
     logger.info('Current working directory: %s', current_path)
 
-    for dir_name in ('internal_filesystem', Path('lvgl_micropython', 'build')):
+    for dir_name in ('internal_filesystem', 'lvgl_micropython'):
         dir_path = current_path / dir_name
         logger.debug('Checking for directory: %s', dir_path)
         if not dir_path.is_dir():

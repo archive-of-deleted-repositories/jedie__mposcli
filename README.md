@@ -229,16 +229,22 @@ the REPL. The goal it to try to get a REPL in a loop until it works.
 
 [comment]: <> (✂✂✂ auto generated update start ✂✂✂)
 ```
-usage: mposcli update [-h] [-v]
+usage: mposcli update [-h] [--cleanup | --no-cleanup] [--shallow-clone | --no-shallow-
+clone] [-v]
 
 Update MicroPythonOS repository. Assume that there is a "origin" and/or "upstream" remote
 configured. Will also ask if you want to update the submodules as well, which is
 recommended.
 
-╭─ options ────────────────────────────────────────────────────────────────╮
-│ -h, --help       show this help message and exit                         │
-│ -v, --verbosity  Verbosity level; e.g.: -v, -vv, -vvv, etc. (repeatable) │
-╰──────────────────────────────────────────────────────────────────────────╯
+╭─ options ──────────────────────────────────────────────────────────────────────────────╮
+│ -h, --help       show this help message and exit                                       │
+│ --cleanup, --no-cleanup                                                                │
+│                  Cleanup unnecessary files and optimize the local repository, too?     │
+│                  (default: True)                                                       │
+│ --shallow-clone, --no-shallow-clone                                                    │
+│                  Submodules only a shallow clone with --depth=1? (default: False)      │
+│ -v, --verbosity  Verbosity level; e.g.: -v, -vv, -vvv, etc. (repeatable)               │
+╰────────────────────────────────────────────────────────────────────────────────────────╯
 ```
 [comment]: <> (✂✂✂ auto generated update end ✂✂✂)
 
@@ -250,16 +256,22 @@ recommended.
 
 [comment]: <> (✂✂✂ auto generated update-submodules start ✂✂✂)
 ```
-usage: mposcli update-submodules [-h] [-v]
+usage: mposcli update-submodules [-h] [--cleanup | --no-cleanup] [--shallow-clone | --no-
+shallow-clone] [-v]
 
 Updates MicroPythonOS git submodules only. Use "mposcli update" to update the main
 repository and optionally the submodules as well. see: https://docs.micropythonos.com/os-
 development/linux/#optional-updating-the-code
 
-╭─ options ────────────────────────────────────────────────────────────────╮
-│ -h, --help       show this help message and exit                         │
-│ -v, --verbosity  Verbosity level; e.g.: -v, -vv, -vvv, etc. (repeatable) │
-╰──────────────────────────────────────────────────────────────────────────╯
+╭─ options ──────────────────────────────────────────────────────────────────────────────╮
+│ -h, --help       show this help message and exit                                       │
+│ --cleanup, --no-cleanup                                                                │
+│                  Cleanup unnecessary files and optimize the local repository, too?     │
+│                  (default: True)                                                       │
+│ --shallow-clone, --no-shallow-clone                                                    │
+│                  Submodules only a shallow clone with --depth=1? (default: False)      │
+│ -v, --verbosity  Verbosity level; e.g.: -v, -vv, -vvv, etc. (repeatable)               │
+╰────────────────────────────────────────────────────────────────────────────────────────╯
 ```
 [comment]: <> (✂✂✂ auto generated update-submodules end ✂✂✂)
 
@@ -329,6 +341,7 @@ completion,test,update,update-readme-history,update-test-snapshot-files,version}
 [comment]: <> (✂✂✂ auto generated history start ✂✂✂)
 
 * [**dev**](https://github.com/jedie/mposcli/compare/v0.6.0...main)
+  * 2026-03-24 - Safe diskspace in mposcli update / update-submodules
   * 2026-03-22 - Use "retry loop" for copy, too
 * [v0.6.0](https://github.com/jedie/mposcli/compare/v0.5.0...v0.6.0)
   * 2026-03-21 - NEW: "shell" to start the REPL
