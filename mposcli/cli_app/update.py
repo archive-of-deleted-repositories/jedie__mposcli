@@ -1,5 +1,8 @@
 import logging
+import shutil
+from typing import Annotated
 
+import tyro
 from cli_base.cli_tools.git import Git
 from cli_base.cli_tools.verbosity import setup_logging
 from cli_base.tyro_commands import TyroVerbosityArgType
@@ -12,13 +15,37 @@ from mposcli.mpos_utils import get_mpos_path
 logger = logging.getLogger(__name__)
 
 
-def _update_submodules(git: Git):
-    git.git_verbose_check_call('submodule', 'foreach', '--recursive', 'git', 'clean', '-f', ';', 'git', 'checkout', '.')
-    git.git_verbose_check_call('pull', '--recurse-submodules', '--force')
+def _update_submodules(git: Git, *, cleanup, shallow_clone):
+    if shallow_clone:
+        git.git_verbose_check_call('submodule', 'deinit', '-f', '--all')
+        modules_path = git.cwd / '.git' / 'modules'
+        if modules_path.exists():
+            shutil.rmtree(modules_path)
+        git.git_verbose_check_call('submodule', 'update', '--init', '--depth', '1', '--recursive')
+    else:
+        git.git_verbose_check_call(
+            'submodule', 'foreach', '--recursive', 'git', 'clean', '-f', ';', 'git', 'checkout', '.'
+        )
+        git.git_verbose_check_call('pull', '--recurse-submodules', '--force')
+
+        if cleanup:
+            git.git_verbose_check_call(
+                'submodule', 'foreach', '--recursive', 'git', 'gc', '--aggressive', '--prune=now'
+            )
 
 
 @app.command
-def update_submodules(verbosity: TyroVerbosityArgType = 1):
+def update_submodules(
+    cleanup: Annotated[
+        bool,
+        tyro.conf.arg(help='Cleanup unnecessary files and optimize the local repository, too?'),
+    ] = True,
+    shallow_clone: Annotated[
+        bool,
+        tyro.conf.arg(help='Submodules only a shallow clone with --depth=1?'),
+    ] = False,
+    verbosity: TyroVerbosityArgType = 1,
+):
     """
     Updates MicroPythonOS git submodules only.
     Use "mposcli update" to update the main repository and optionally the submodules as well.
@@ -27,11 +54,21 @@ def update_submodules(verbosity: TyroVerbosityArgType = 1):
     setup_logging(verbosity=verbosity)
     mpos_path = get_mpos_path()
     git = Git(cwd=mpos_path)
-    _update_submodules(git)
+    _update_submodules(git, cleanup=cleanup, shallow_clone=shallow_clone)
 
 
 @app.command
-def update(verbosity: TyroVerbosityArgType = 1):
+def update(
+    cleanup: Annotated[
+        bool,
+        tyro.conf.arg(help='Cleanup unnecessary files and optimize the local repository, too?'),
+    ] = True,
+    shallow_clone: Annotated[
+        bool,
+        tyro.conf.arg(help='Submodules only a shallow clone with --depth=1?'),
+    ] = False,
+    verbosity: TyroVerbosityArgType = 1,
+):
     """
     Update MicroPythonOS repository. Assume that there is a "origin" and/or "upstream" remote configured.
     Will also ask if you want to update the submodules as well, which is recommended.
@@ -55,7 +92,11 @@ def update(verbosity: TyroVerbosityArgType = 1):
         else:
             print(f'[yellow]Remote "{remote_name}" not found, skipping rebase to it.')
 
+    if cleanup:
+        print('\nCleaning up the git repository...\n')
+        git.git_verbose_check_call('gc', '--aggressive', '--prune=now')
+
     print('\n')
     if input('Do you want to update submodules as well? [Y/n] (default: Yes): ') in ('y', ''):
         print('\nUpdating submodules...\n')
-        _update_submodules(git)
+        _update_submodules(git, cleanup=cleanup, shallow_clone=shallow_clone)
