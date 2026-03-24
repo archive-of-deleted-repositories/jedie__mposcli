@@ -4,11 +4,11 @@ from typing import Annotated
 import tyro
 from cli_base.cli_tools.subprocess_utils import verbose_check_call
 from cli_base.cli_tools.verbosity import setup_logging
-from cli_base.tyro_commands import TyroVerbosityArgType
 from rich import print
 
 from mposcli.cli_app import app
 from mposcli.mpos_utils import get_mpos_path
+from mposcli.shared_tyro import DEFAULT_VERBOSITY, TyroVerbosityArgType
 from mposcli.tools import get_esptool_bin, get_mpremote_bin
 from mposcli.user_input import file_chooser
 
@@ -34,7 +34,7 @@ def flash(
         bool,
         tyro.conf.arg(help='After flashing/verify start REPL with mpremote to see the output of the device?'),
     ] = True,
-    verbosity: TyroVerbosityArgType = 1,
+    verbosity: TyroVerbosityArgType = DEFAULT_VERBOSITY,
 ):
     """
     Flash MicroPythonOS to the device. Display a file chooser to select the image to flash.

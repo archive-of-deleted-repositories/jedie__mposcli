@@ -340,6 +340,9 @@ completion,test,update,update-readme-history,update-test-snapshot-files,version}
 
 [comment]: <> (✂✂✂ auto generated history start ✂✂✂)
 
+* [v0.7.1](https://github.com/jedie/mposcli/compare/v0.7.0...v0.7.1)
+  * 2026-03-24 - Warn if non executeable build found
+  * 2026-03-24 - Set log level to WARNING as default
 * [v0.7.0](https://github.com/jedie/mposcli/compare/v0.6.0...v0.7.0)
   * 2026-03-24 - Safe diskspace in mposcli update / update-submodules
   * 2026-03-22 - Use "retry loop" for copy, too
@@ -350,11 +353,11 @@ completion,test,update,update-readme-history,update-test-snapshot-files,version}
   * 2026-03-05 - Enhance "cp" command and auto restart "mpremote repl"
   * 2026-03-03 - Refactor "cp" command
   * 2026-03-03 - flash command: use port auto detection as default
-* [v0.4.1](https://github.com/jedie/mposcli/compare/v0.4.0...v0.4.1)
-  * 2026-02-27 - Use "--force" for pulling submodules to overwrite local changes
 
 <details><summary>Expand older history entries ...</summary>
 
+* [v0.4.1](https://github.com/jedie/mposcli/compare/v0.4.0...v0.4.1)
+  * 2026-02-27 - Use "--force" for pulling submodules to overwrite local changes
 * [v0.4.0](https://github.com/jedie/mposcli/compare/v0.3.0...v0.4.0)
   * 2026-02-24 - NEW command: "cp-app" to install/update internal_filesystem/apps
   * 2026-02-24 - Log skipped files
