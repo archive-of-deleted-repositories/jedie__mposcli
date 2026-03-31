@@ -47,14 +47,14 @@ class ProjectSetupTestCase(TestCase):
                 resolver.resolve(mpos_path / 'internal_filesystem/lib/mpos/board/'),
                 (
                     'internal_filesystem/lib/mpos/board/',
-                    ':mpos/',
+                    ':lib/mpos/',
                 ),
             )
             self.assertEqual(
                 resolver.resolve(mpos_path / 'internal_filesystem/lib/mpos/board/unphone.py'),
                 (
                     'internal_filesystem/lib/mpos/board/unphone.py',
-                    ':mpos/board/unphone.py',
+                    ':lib/mpos/board/unphone.py',
                 ),
             )
 
