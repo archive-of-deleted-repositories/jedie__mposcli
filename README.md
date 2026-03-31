@@ -340,6 +340,7 @@ completion,test,update,update-readme-history,update-test-snapshot-files,version}
 
 [comment]: <> (✂✂✂ auto generated history start ✂✂✂)
 
+* [**dev**](https://github.com/jedie/mposcli/compare/v0.7.1...main)
 * [v0.7.1](https://github.com/jedie/mposcli/compare/v0.7.0...v0.7.1)
   * 2026-03-24 - Warn if non executeable build found
   * 2026-03-24 - Set log level to WARNING as default
@@ -348,14 +349,14 @@ completion,test,update,update-readme-history,update-test-snapshot-files,version}
   * 2026-03-22 - Use "retry loop" for copy, too
 * [v0.6.0](https://github.com/jedie/mposcli/compare/v0.5.0...v0.6.0)
   * 2026-03-21 - NEW: "shell" to start the REPL
+
+<details><summary>Expand older history entries ...</summary>
+
 * [v0.5.0](https://github.com/jedie/mposcli/compare/v0.4.1...v0.5.0)
   * 2026-03-08 - update README
   * 2026-03-05 - Enhance "cp" command and auto restart "mpremote repl"
   * 2026-03-03 - Refactor "cp" command
   * 2026-03-03 - flash command: use port auto detection as default
-
-<details><summary>Expand older history entries ...</summary>
-
 * [v0.4.1](https://github.com/jedie/mposcli/compare/v0.4.0...v0.4.1)
   * 2026-02-27 - Use "--force" for pulling submodules to overwrite local changes
 * [v0.4.0](https://github.com/jedie/mposcli/compare/v0.3.0...v0.4.0)
