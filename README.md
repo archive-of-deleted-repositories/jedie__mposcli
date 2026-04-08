@@ -82,13 +82,13 @@ submodules,version}
 
 [comment]: <> (✂✂✂ auto generated build start ✂✂✂)
 ```
-usage: mposcli build [-h] [{esp32,esp32s3,unphone,unix,macOS}] [-v]
+usage: mposcli build [-h] [{esp32,esp32-small,esp32s3,unphone,unix,macOS}] [-v]
 
 Build MicroPythonOS by calling: ./scripts/build_mpos.sh <target> see:
 https://docs.micropythonos.com/os-development/
 
 ╭─ positional arguments ───────────────────────────────────────────────────╮
-│ [{esp32,esp32s3,unphone,unix,macOS}]                                     │
+│ [{esp32,esp32-small,esp32s3,unphone,unix,macOS}]                         │
 │                  Target platform to build for. (default: unix)           │
 ╰──────────────────────────────────────────────────────────────────────────╯
 ╭─ options ────────────────────────────────────────────────────────────────╮
@@ -347,6 +347,7 @@ completion,test,update,update-readme-history,update-test-snapshot-files,version}
 [comment]: <> (✂✂✂ auto generated history start ✂✂✂)
 
 * [v0.8.0](https://github.com/jedie/mposcli/compare/v0.7.1...v0.8.0)
+  * 2026-04-08 - Update build targets
   * 2026-04-08 - Enhance git submodule update
   * 2026-04-08 - update requirements
   * 2026-03-31 - Fix local <-> device filesystem mapping
