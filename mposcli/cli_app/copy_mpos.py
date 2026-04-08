@@ -58,10 +58,10 @@ def cp(
 
     if not local_path:
         # Let's the user select from the list of the newest modified files in internal_filesystem/lib/mpos:
-        local_path = get_newest_files(resolver.lib_mpos, limit=new_file_limit)
+        local_path = get_newest_files(resolver.internal_fs, limit=new_file_limit)
         if not local_path:
             print('Copy/update all files in lib/mpos to the device')
-            local_path = resolver.lib_mpos
+            local_path = resolver.internal_fs
 
     print(f'Copy/update app: "{local_path}" ...')
 
