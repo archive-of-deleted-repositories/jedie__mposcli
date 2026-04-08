@@ -229,8 +229,7 @@ the REPL. The goal it to try to get a REPL in a loop until it works.
 
 [comment]: <> (✂✂✂ auto generated update start ✂✂✂)
 ```
-usage: mposcli update [-h] [--cleanup | --no-cleanup] [--shallow-clone | --no-shallow-
-clone] [-v]
+usage: mposcli update [-h] [UPDATE OPTIONS]
 
 Update MicroPythonOS repository. Assume that there is a "origin" and/or "upstream" remote
 configured. Will also ask if you want to update the submodules as well, which is
@@ -242,7 +241,11 @@ recommended.
 │                  Cleanup unnecessary files and optimize the local repository, too?     │
 │                  (default: True)                                                       │
 │ --shallow-clone, --no-shallow-clone                                                    │
-│                  Submodules only a shallow clone with --depth=1? (default: False)      │
+│                  Submodules only a shallow clone with --depth=1? (default: True)       │
+│ --reset-submodules, --no-reset-submodules                                              │
+│                  Drop and recreate all submodules? (Takes a while) (default: False)    │
+│ --jobs INT       git submodule update --jobs argument, i.e. how many submodules to     │
+│                  update in parallel (default: 16)                                      │
 │ -v, --verbosity  Verbosity level; e.g.: -v, -vv, -vvv, etc. (repeatable)               │
 ╰────────────────────────────────────────────────────────────────────────────────────────╯
 ```
@@ -256,8 +259,7 @@ recommended.
 
 [comment]: <> (✂✂✂ auto generated update-submodules start ✂✂✂)
 ```
-usage: mposcli update-submodules [-h] [--cleanup | --no-cleanup] [--shallow-clone | --no-
-shallow-clone] [-v]
+usage: mposcli update-submodules [-h] [UPDATE-SUBMODULES OPTIONS]
 
 Updates MicroPythonOS git submodules only. Use "mposcli update" to update the main
 repository and optionally the submodules as well. see: https://docs.micropythonos.com/os-
@@ -269,7 +271,11 @@ development/linux/#optional-updating-the-code
 │                  Cleanup unnecessary files and optimize the local repository, too?     │
 │                  (default: True)                                                       │
 │ --shallow-clone, --no-shallow-clone                                                    │
-│                  Submodules only a shallow clone with --depth=1? (default: False)      │
+│                  Submodules only a shallow clone with --depth=1? (default: True)       │
+│ --reset-submodules, --no-reset-submodules                                              │
+│                  Drop and recreate all submodules? (Takes a while) (default: False)    │
+│ --jobs INT       git submodule update --jobs argument, i.e. how many submodules to     │
+│                  update in parallel (default: 16)                                      │
 │ -v, --verbosity  Verbosity level; e.g.: -v, -vv, -vvv, etc. (repeatable)               │
 ╰────────────────────────────────────────────────────────────────────────────────────────╯
 ```
@@ -340,7 +346,8 @@ completion,test,update,update-readme-history,update-test-snapshot-files,version}
 
 [comment]: <> (✂✂✂ auto generated history start ✂✂✂)
 
-* [**dev**](https://github.com/jedie/mposcli/compare/v0.7.1...main)
+* [v0.8.0](https://github.com/jedie/mposcli/compare/v0.7.1...v0.8.0)
+  * 2026-04-08 - Enhance git submodule update
   * 2026-04-08 - update requirements
   * 2026-03-31 - Fix local <-> device filesystem mapping
 * [v0.7.1](https://github.com/jedie/mposcli/compare/v0.7.0...v0.7.1)

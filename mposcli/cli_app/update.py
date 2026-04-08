@@ -14,24 +14,36 @@ from mposcli.shared_tyro import DEFAULT_VERBOSITY, TyroVerbosityArgType
 
 logger = logging.getLogger(__name__)
 
+GIT_JOBS_DEFAULT = 16
 
-def _update_submodules(git: Git, *, cleanup, shallow_clone):
-    if shallow_clone:
-        git.git_verbose_check_call('submodule', 'deinit', '-f', '--all')
+
+def _update_submodules(git: Git, *, cleanup, shallow_clone, reset_submodules, jobs: int):
+    if reset_submodules:
+        git.git_verbose_check_call('submodule', 'deinit', '--force', '--all')
         modules_path = git.cwd / '.git' / 'modules'
         if modules_path.exists():
             shutil.rmtree(modules_path)
-        git.git_verbose_check_call('submodule', 'update', '--init', '--depth', '1', '--recursive')
-    else:
-        git.git_verbose_check_call(
-            'submodule', 'foreach', '--recursive', 'git', 'clean', '-f', ';', 'git', 'checkout', '.'
-        )
-        git.git_verbose_check_call('pull', '--recurse-submodules', '--force')
+        git.git_verbose_check_call('gc', '--aggressive', '--prune=now')
 
-        if cleanup:
-            git.git_verbose_check_call(
-                'submodule', 'foreach', '--recursive', 'git', 'gc', '--aggressive', '--prune=now'
-            )
+        args = ('submodule', 'update', '--init', '--recursive', '--jobs', str(jobs))
+        if shallow_clone:
+            args += ('--depth', '1')
+        git.git_verbose_check_call(*args)
+    else:
+        git.git_verbose_check_call('submodule', 'sync', '--recursive')
+        git.git_verbose_check_call('submodule', 'foreach', '--recursive', 'git', 'reset', '--hard')
+        git.git_verbose_check_call('submodule', 'foreach', '--recursive', 'git', 'clean', '-ffdx')
+        git.git_verbose_check_call('submodule', 'foreach', '--recursive', 'git', 'fetch', '--all', '--jobs', str(jobs))
+
+        args = ('submodule', 'update', '--init', '--recursive', '--force', '--jobs', str(jobs))
+        if shallow_clone:
+            args += ('--depth', '1')
+        git.git_verbose_check_call(*args)
+
+    if cleanup:
+        git.git_verbose_check_call(
+            'submodule', 'foreach', '--recursive', 'git', 'gc', '--prune=now',
+        )
 
 
 @app.command
@@ -43,7 +55,15 @@ def update_submodules(
     shallow_clone: Annotated[
         bool,
         tyro.conf.arg(help='Submodules only a shallow clone with --depth=1?'),
+    ] = True,
+    reset_submodules: Annotated[
+        bool,
+        tyro.conf.arg(help='Drop and recreate all submodules? (Takes a while)'),
     ] = False,
+    jobs: Annotated[
+        int,
+        tyro.conf.arg(help='git submodule update --jobs argument, i.e. how many submodules to update in parallel'),
+    ] = GIT_JOBS_DEFAULT,
     verbosity: TyroVerbosityArgType = DEFAULT_VERBOSITY,
 ):
     """
@@ -54,7 +74,7 @@ def update_submodules(
     setup_logging(verbosity=verbosity)
     mpos_path = get_mpos_path()
     git = Git(cwd=mpos_path)
-    _update_submodules(git, cleanup=cleanup, shallow_clone=shallow_clone)
+    _update_submodules(git, cleanup=cleanup, shallow_clone=shallow_clone, reset_submodules=reset_submodules, jobs=jobs)
 
 
 @app.command
@@ -66,7 +86,15 @@ def update(
     shallow_clone: Annotated[
         bool,
         tyro.conf.arg(help='Submodules only a shallow clone with --depth=1?'),
+    ] = True,
+    reset_submodules: Annotated[
+        bool,
+        tyro.conf.arg(help='Drop and recreate all submodules? (Takes a while)'),
     ] = False,
+    jobs: Annotated[
+        int,
+        tyro.conf.arg(help='git submodule update --jobs argument, i.e. how many submodules to update in parallel'),
+    ] = GIT_JOBS_DEFAULT,
     verbosity: TyroVerbosityArgType = DEFAULT_VERBOSITY,
 ):
     """
@@ -88,7 +116,9 @@ def update(
 
     for remote_name in ('origin', 'upstream'):
         if remote_name in remotes:
-            git.git_verbose_check_call('rebase', '--no-verify', f'{remote_name}/{main_branch_name}', exit_on_error=True)
+            git.git_verbose_check_call(
+                'rebase', '--no-verify', f'{remote_name}/{main_branch_name}', '--force', exit_on_error=True
+            )
         else:
             print(f'[yellow]Remote "{remote_name}" not found, skipping rebase to it.')
 
@@ -99,4 +129,6 @@ def update(
     print('\n')
     if input('Do you want to update submodules as well? [Y/n] (default: Yes): ') in ('y', ''):
         print('\nUpdating submodules...\n')
-        _update_submodules(git, cleanup=cleanup, shallow_clone=shallow_clone)
+        _update_submodules(
+            git, cleanup=cleanup, shallow_clone=shallow_clone, reset_submodules=reset_submodules, jobs=jobs
+        )
