@@ -341,8 +341,8 @@ completion,test,update,update-readme-history,update-test-snapshot-files,version}
 [comment]: <> (✂✂✂ auto generated history start ✂✂✂)
 
 * [**dev**](https://github.com/jedie/mposcli/compare/v0.7.1...main)
+  * 2026-04-08 - update requirements
   * 2026-03-31 - Fix local <-> device filesystem mapping
-  * 2026-03-31 - update requirements
 * [v0.7.1](https://github.com/jedie/mposcli/compare/v0.7.0...v0.7.1)
   * 2026-03-24 - Warn if non executeable build found
   * 2026-03-24 - Set log level to WARNING as default
