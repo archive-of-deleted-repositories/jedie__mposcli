@@ -346,6 +346,8 @@ completion,test,update,update-readme-history,update-test-snapshot-files,version}
 
 [comment]: <> (✂✂✂ auto generated history start ✂✂✂)
 
+* [**dev**](https://github.com/jedie/mposcli/compare/v0.8.0...main)
+  * 2026-05-31 - Update requirements
 * [v0.8.0](https://github.com/jedie/mposcli/compare/v0.7.1...v0.8.0)
   * 2026-04-08 - Update build targets
   * 2026-04-08 - Enhance git submodule update
@@ -357,11 +359,11 @@ completion,test,update,update-readme-history,update-test-snapshot-files,version}
 * [v0.7.0](https://github.com/jedie/mposcli/compare/v0.6.0...v0.7.0)
   * 2026-03-24 - Safe diskspace in mposcli update / update-submodules
   * 2026-03-22 - Use "retry loop" for copy, too
-* [v0.6.0](https://github.com/jedie/mposcli/compare/v0.5.0...v0.6.0)
-  * 2026-03-21 - NEW: "shell" to start the REPL
 
 <details><summary>Expand older history entries ...</summary>
 
+* [v0.6.0](https://github.com/jedie/mposcli/compare/v0.5.0...v0.6.0)
+  * 2026-03-21 - NEW: "shell" to start the REPL
 * [v0.5.0](https://github.com/jedie/mposcli/compare/v0.4.1...v0.5.0)
   * 2026-03-08 - update README
   * 2026-03-05 - Enhance "cp" command and auto restart "mpremote repl"
