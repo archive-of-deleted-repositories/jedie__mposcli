@@ -347,7 +347,7 @@ completion,test,update,update-readme-history,update-test-snapshot-files,version}
 [comment]: <> (✂✂✂ auto generated history start ✂✂✂)
 
 * [**dev**](https://github.com/jedie/mposcli/compare/v0.8.0...main)
-  * 2026-05-31 - Update requirements
+  * 2026-06-16 - Update requirements
 * [v0.8.0](https://github.com/jedie/mposcli/compare/v0.7.1...v0.8.0)
   * 2026-04-08 - Update build targets
   * 2026-04-08 - Enhance git submodule update
