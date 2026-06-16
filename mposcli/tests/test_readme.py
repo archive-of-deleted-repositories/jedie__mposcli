@@ -10,7 +10,7 @@ from mposcli import constants
 from mposcli.cli_dev import PACKAGE_ROOT
 
 
-BASE_WIDTH = 100
+BASE_WIDTH = 90
 
 
 def remove_until_usage(text: str) -> str:
