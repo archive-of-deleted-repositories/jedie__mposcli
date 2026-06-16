@@ -103,7 +103,7 @@ source = ['.']
 command_line = '-m unittest --verbose --locals --buffer'
 
 [tool.coverage.report]
-omit = ['.*', '*/tests/*']
+omit = ['.*', '*/tests/*', 'noxfile.py']
 skip_empty = true
 fail_under = 30
 show_missing = true
@@ -131,6 +131,7 @@ cookiecutter_template = "https://github.com/jedie/cookiecutter_templates/"
 cookiecutter_directory = "uv-python"
 applied_migrations = [
     "af6dd62", # 2026-01-26T16:04:53+01:00
+    "1124332", # 2026-04-22T17:46:04+02:00
 ]
 
 [manageprojects.cookiecutter_context.cookiecutter]

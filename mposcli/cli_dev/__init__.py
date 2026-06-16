@@ -48,7 +48,7 @@ def version():
 
 
 def main(args: Sequence[str] | None = None):
-    print_version(mposcli)
+    print_version(module=mposcli, project_name='mposcli')
 
     if len(sys.argv) >= 2:
         # Check if we can just pass a command call to origin CLI:

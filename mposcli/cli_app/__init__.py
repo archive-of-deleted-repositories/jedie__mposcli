@@ -8,7 +8,6 @@ from collections.abc import Sequence
 
 from cli_base.autodiscover import import_all_files
 from cli_base.cli_tools.version_info import print_version
-from rich import print  # noqa
 from tyro.extras import SubcommandApp
 
 import mposcli
@@ -31,9 +30,10 @@ def version():
 
 
 def main(args: Sequence[str] | None = None):
-    print_version(mposcli)
+    project_name = 'mposcli'  # Enforce program name if pipx used
+    print_version(module=mposcli, project_name=project_name)
     app.cli(
-        prog='mposcli',  # Enforce "pipx" usage
+        prog=project_name,
         description=constants.CLI_EPILOG,
         use_underscores=False,  # use hyphens instead of underscores
         sort_subcommands=True,

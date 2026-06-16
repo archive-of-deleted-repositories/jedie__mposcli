@@ -3,14 +3,19 @@ import textwrap
 from bx_py_utils.auto_doc import assert_readme_block
 from bx_py_utils.path import assert_is_file
 from cli_base.cli_tools.test_utils.assertion import assert_in
-from cli_base.cli_tools.test_utils.rich_test_utils import NoColorEnvRich, invoke
+from cli_base.cli_tools.test_utils.rich_test_utils import BASE_WIDTH, NoColorEnvRich, invoke
 from manageprojects.tests.base import BaseTestCase
 
 from mposcli import constants
 from mposcli.cli_dev import PACKAGE_ROOT
 
 
-BASE_WIDTH = 90
+def remove_until_usage(text: str) -> str:
+    lines = text.splitlines()
+    for idx, line in enumerate(lines):
+        if line.startswith('usage: '):
+            return '\n'.join(lines[idx:])
+    raise ValueError('No usage line found')
 
 
 def assert_cli_help_in_readme(text_block: str, marker: str):
@@ -18,6 +23,7 @@ def assert_cli_help_in_readme(text_block: str, marker: str):
     assert_is_file(README_PATH)
 
     text_block = text_block.replace(constants.CLI_EPILOG, '')
+    text_block = remove_until_usage(text_block)
 
     # tyro doesn't add line breaks in DocStrings. So we need to add them manually for better readability in the README:
     wrapped_lines = []
@@ -26,6 +32,7 @@ def assert_cli_help_in_readme(text_block: str, marker: str):
     text_block = '\n'.join(wrapped_lines)
 
     text_block = f'```\n{text_block.strip()}\n```'
+
     assert_readme_block(
         readme_path=README_PATH,
         text_block=text_block,
@@ -35,14 +42,9 @@ def assert_cli_help_in_readme(text_block: str, marker: str):
 
 
 class ReadmeTestCase(BaseTestCase):
-
     def test_main_help(self):
-        with NoColorEnvRich(width=BASE_WIDTH):
-            stdout = invoke(
-                cli_bin=PACKAGE_ROOT / 'cli.py',
-                args=['--help'],
-                strip_line_prefix='usage: ',
-            )
+        with NoColorEnvRich():
+            stdout = invoke(cli_bin=PACKAGE_ROOT / 'cli.py', args=['--help'], strip_line_prefix='usage: ')
         assert_in(
             content=stdout,
             parts=(
@@ -55,12 +57,8 @@ class ReadmeTestCase(BaseTestCase):
         assert_cli_help_in_readme(text_block=stdout, marker='main help')
 
     def test_dev_help(self):
-        with NoColorEnvRich(width=BASE_WIDTH):
-            stdout = invoke(
-                cli_bin=PACKAGE_ROOT / 'dev-cli.py',
-                args=['--help'],
-                strip_line_prefix='usage: ',
-            )
+        with NoColorEnvRich():
+            stdout = invoke(cli_bin=PACKAGE_ROOT / 'dev-cli.py', args=['--help'], strip_line_prefix='usage: ')
         assert_in(
             content=stdout,
             parts=(
@@ -99,7 +97,7 @@ class ReadmeTestCase(BaseTestCase):
 
         for command in commands:
             with self.subTest(command):
-                with NoColorEnvRich(width=BASE_WIDTH):
+                with NoColorEnvRich():
                     stdout = invoke(
                         cli_bin=PACKAGE_ROOT / 'cli.py',
                         args=[command, '--help'],
