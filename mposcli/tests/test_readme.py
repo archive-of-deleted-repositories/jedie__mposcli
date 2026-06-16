@@ -3,11 +3,14 @@ import textwrap
 from bx_py_utils.auto_doc import assert_readme_block
 from bx_py_utils.path import assert_is_file
 from cli_base.cli_tools.test_utils.assertion import assert_in
-from cli_base.cli_tools.test_utils.rich_test_utils import BASE_WIDTH, NoColorEnvRich, invoke
+from cli_base.cli_tools.test_utils.rich_test_utils import NoColorEnvRich, invoke
 from manageprojects.tests.base import BaseTestCase
 
 from mposcli import constants
 from mposcli.cli_dev import PACKAGE_ROOT
+
+
+BASE_WIDTH = 100
 
 
 def remove_until_usage(text: str) -> str:
@@ -43,7 +46,7 @@ def assert_cli_help_in_readme(text_block: str, marker: str):
 
 class ReadmeTestCase(BaseTestCase):
     def test_main_help(self):
-        with NoColorEnvRich():
+        with NoColorEnvRich(width=BASE_WIDTH):
             stdout = invoke(cli_bin=PACKAGE_ROOT / 'cli.py', args=['--help'], strip_line_prefix='usage: ')
         assert_in(
             content=stdout,
@@ -57,7 +60,7 @@ class ReadmeTestCase(BaseTestCase):
         assert_cli_help_in_readme(text_block=stdout, marker='main help')
 
     def test_dev_help(self):
-        with NoColorEnvRich():
+        with NoColorEnvRich(width=BASE_WIDTH):
             stdout = invoke(cli_bin=PACKAGE_ROOT / 'dev-cli.py', args=['--help'], strip_line_prefix='usage: ')
         assert_in(
             content=stdout,
@@ -98,7 +101,7 @@ class ReadmeTestCase(BaseTestCase):
 
         for command in commands:
             with self.subTest(command):
-                with NoColorEnvRich():
+                with NoColorEnvRich(width=BASE_WIDTH):
                     stdout = invoke(
                         cli_bin=PACKAGE_ROOT / 'cli.py',
                         args=[command, '--help'],
