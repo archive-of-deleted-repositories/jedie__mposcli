@@ -32,47 +32,37 @@ cd ~/MicroPythonOS
 
 [comment]: <> (✂✂✂ auto generated main help start ✂✂✂)
 ```
-usage: mposcli [-h] {build,cp,cp-app,flash,run-desktop,shell,update,update-
-submodules,version}
+usage: mposcli [-h] {build,cp,cp-app,flash,run-desktop,shell,update,update-submodules,version}
 
 
 
-╭─ options ──────────────────────────────────────────────────────────────────────────────╮
-│ -h, --help             show this help message and exit                                 │
-╰────────────────────────────────────────────────────────────────────────────────────────╯
-╭─ subcommands ──────────────────────────────────────────────────────────────────────────╮
-│ (required)                                                                             │
-│   • build              Build MicroPythonOS by calling: ./scripts/build_mpos.sh         │
-│                        <target> see: https://docs.micropythonos.com/os-development/    │
-│   • cp                 Copy/update internal_filesystem/lib/mpos files to the device    │
-│                        via "mpremote fs cp". Display a file chooser to select which    │
-│                        files to copy/update. But can also be used to copy/update all   │
-│                        files. see:                                                     │
-│                        https://docs.micropythonos.com/architecture/filesystem/         │
-│   • cp-app             Copy/update internal_filesystem/apps to the device via          │
-│                        "mpremote fs cp". Display a file chooser to select which app to │
-│                        copy/update. But can also be used to copy/update all files.     │
-│                        see: https://docs.micropythonos.com/os-development/installing-o │
-│                        n-esp32/                                                        │
-│   • flash              Flash MicroPythonOS to the device. Display a file chooser to    │
-│                        select the image to flash. All lvgl_micropython/build/*.bin     │
-│                        files will be shown in the file chooser. see: https://docs.micr │
-│                        opythonos.com/os-development/installing-on-esp32/               │
-│   • run-desktop        Run MicroPythonOS on desktop. see: https://docs.micropythonos.c │
-│                        om/getting-started/running/#running-on-desktop                  │
-│   • shell              Start a REPL shell connected to the device using mpremote.      │
-│                        Optional reset before starting the REPL. The goal it to try to  │
-│                        get a REPL in a loop until it works.                            │
-│   • update             Update MicroPythonOS repository. Assume that there is a         │
-│                        "origin" and/or "upstream" remote configured. Will also ask if  │
-│                        you want to update the submodules as well, which is             │
-│                        recommended.                                                    │
-│   • update-submodules  Updates MicroPythonOS git submodules only. Use "mposcli update" │
-│                        to update the main repository and optionally the submodules as  │
-│                        well. see: https://docs.micropythonos.com/os-development/linux/ │
-│                        #optional-updating-the-code                                     │
-│   • version            Print version and exit                                          │
-╰────────────────────────────────────────────────────────────────────────────────────────╯
+╭─ options ────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│ -h, --help             show this help message and exit                                                               │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+╭─ subcommands ────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│ (required)                                                                                                           │
+│   • build              Build MicroPythonOS by calling: ./scripts/build_mpos.sh <target> see:                         │
+│                        https://docs.micropythonos.com/os-development/                                                │
+│   • cp                 Copy/update internal_filesystem/lib/mpos files to the device via "mpremote fs cp". Display a  │
+│                        file chooser to select which files to copy/update. But can also be used to copy/update all    │
+│                        files. see: https://docs.micropythonos.com/architecture/filesystem/                           │
+│   • cp-app             Copy/update internal_filesystem/apps to the device via "mpremote fs cp". Display a file       │
+│                        chooser to select which app to copy/update. But can also be used to copy/update all files.    │
+│                        see: https://docs.micropythonos.com/os-development/installing-on-esp32/                       │
+│   • flash              Flash MicroPythonOS to the device. Display a file chooser to select the image to flash. All   │
+│                        lvgl_micropython/build/*.bin files will be shown in the file chooser. see:                    │
+│                        https://docs.micropythonos.com/os-development/installing-on-esp32/                            │
+│   • run-desktop        Run MicroPythonOS on desktop. see:                                                            │
+│                        https://docs.micropythonos.com/getting-started/running/#running-on-desktop                    │
+│   • shell              Start a REPL shell connected to the device using mpremote. Optional reset before starting the │
+│                        REPL. The goal it to try to get a REPL in a loop until it works.                              │
+│   • update             Update MicroPythonOS repository. Assume that there is a "origin" and/or "upstream" remote     │
+│                        configured. Will also ask if you want to update the submodules as well, which is recommended. │
+│   • update-submodules  Updates MicroPythonOS git submodules only. Use "mposcli update" to update the main repository │
+│                        and optionally the submodules as well. see:                                                   │
+│                        https://docs.micropythonos.com/os-development/linux/#optional-updating-the-code               │
+│   • version            Print version and exit                                                                        │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
 ```
 [comment]: <> (✂✂✂ auto generated main help end ✂✂✂)
 
@@ -84,8 +74,7 @@ submodules,version}
 ```
 usage: mposcli build [-h] [{esp32,esp32-small,esp32s3,unphone,unix,macOS}] [-v]
 
-Build MicroPythonOS by calling: ./scripts/build_mpos.sh <target> see:
-https://docs.micropythonos.com/os-development/
+Build MicroPythonOS by calling: ./scripts/build_mpos.sh <target> see: https://docs.micropythonos.com/os-development/
 
 ╭─ positional arguments ───────────────────────────────────────────────────╮
 │ [{esp32,esp32-small,esp32s3,unphone,unix,macOS}]                         │
@@ -106,22 +95,21 @@ https://docs.micropythonos.com/os-development/
 ```
 usage: mposcli cp [-h] [CP OPTIONS]
 
-Copy/update internal_filesystem/lib/mpos files to the device via "mpremote fs cp". Display
-a file chooser to select which files to copy/update. But can also be used to copy/update
-all files. see: https://docs.micropythonos.com/architecture/filesystem/
+Copy/update internal_filesystem/lib/mpos files to the device via "mpremote fs cp". Display a file chooser to select
+which files to copy/update. But can also be used to copy/update all files. see:
+https://docs.micropythonos.com/architecture/filesystem/
 
-╭─ positional arguments ─────────────────────────────────────────────────────────────────╮
-│ [{None}|PATH]         Optional file or directory path. (default: None)                 │
-╰────────────────────────────────────────────────────────────────────────────────────────╯
-╭─ options ──────────────────────────────────────────────────────────────────────────────╮
-│ -h, --help            show this help message and exit                                  │
-│ --new-file-limit INT  How many of the newest files to show in the file chooser?        │
-│                       (default: 10)                                                    │
-│ --reset, --no-reset   Reset the device after copy/update? (default: True)              │
-│ --repl, --no-repl     After flashing/verify start REPL with mpremote to see the output │
-│                       of the device? (default: True)                                   │
-│ -v, --verbosity       Verbosity level; e.g.: -v, -vv, -vvv, etc. (repeatable)          │
-╰────────────────────────────────────────────────────────────────────────────────────────╯
+╭─ positional arguments ───────────────────────────────────────────────────────────────────────────────────────────────╮
+│ [{None}|PATH]         Optional file or directory path. (default: None)                                               │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+╭─ options ────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│ -h, --help            show this help message and exit                                                                │
+│ --new-file-limit INT  How many of the newest files to show in the file chooser? (default: 10)                        │
+│ --reset, --no-reset   Reset the device after copy/update? (default: True)                                            │
+│ --repl, --no-repl     After flashing/verify start REPL with mpremote to see the output of the device? (default:      │
+│                       True)                                                                                          │
+│ -v, --verbosity       Verbosity level; e.g.: -v, -vv, -vvv, etc. (repeatable)                                        │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
 ```
 [comment]: <> (✂✂✂ auto generated cp end ✂✂✂)
 
@@ -134,17 +122,16 @@ all files. see: https://docs.micropythonos.com/architecture/filesystem/
 ```
 usage: mposcli cp-app [-h] [--reset | --no-reset] [--repl | --no-repl] [-v]
 
-Copy/update internal_filesystem/apps to the device via "mpremote fs cp". Display a file
-chooser to select which app to copy/update. But can also be used to copy/update all files.
-see: https://docs.micropythonos.com/os-development/installing-on-esp32/
+Copy/update internal_filesystem/apps to the device via "mpremote fs cp". Display a file chooser to select which app to
+copy/update. But can also be used to copy/update all files. see: https://docs.micropythonos.com/os-
+development/installing-on-esp32/
 
-╭─ options ──────────────────────────────────────────────────────────────────────────────╮
-│ -h, --help           show this help message and exit                                   │
-│ --reset, --no-reset  Reset the device after copy/update? (default: True)               │
-│ --repl, --no-repl    After flashing/verify start REPL with mpremote to see the output  │
-│                      of the device? (default: True)                                    │
-│ -v, --verbosity      Verbosity level; e.g.: -v, -vv, -vvv, etc. (repeatable)           │
-╰────────────────────────────────────────────────────────────────────────────────────────╯
+╭─ options ────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│ -h, --help           show this help message and exit                                                                 │
+│ --reset, --no-reset  Reset the device after copy/update? (default: True)                                             │
+│ --repl, --no-repl    After flashing/verify start REPL with mpremote to see the output of the device? (default: True) │
+│ -v, --verbosity      Verbosity level; e.g.: -v, -vv, -vvv, etc. (repeatable)                                         │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
 ```
 [comment]: <> (✂✂✂ auto generated cp-app end ✂✂✂)
 
@@ -156,22 +143,20 @@ see: https://docs.micropythonos.com/os-development/installing-on-esp32/
 ```
 usage: mposcli flash [-h] [FLASH OPTIONS]
 
-Flash MicroPythonOS to the device. Display a file chooser to select the image to flash.
-All lvgl_micropython/build/*.bin files will be shown in the file chooser. see:
-https://docs.micropythonos.com/os-development/installing-on-esp32/
+Flash MicroPythonOS to the device. Display a file chooser to select the image to flash. All lvgl_micropython/build/*.bin
+files will be shown in the file chooser. see: https://docs.micropythonos.com/os-development/installing-on-esp32/
 
-╭─ options ──────────────────────────────────────────────────────────────────────────────╮
-│ -h, --help             show this help message and exit                                 │
-│ --port {None}|STR      Port used for esptool and mpremote, e.g.: "/dev/ttyUSB0" or     │
-│                        "/dev/ttyACM0" etc. Leave empty for autodetection (default:     │
-│                        None)                                                           │
-│ --address STR          Address (default: 0x0)                                          │
-│ --flash-size STR       Flash Size (default: detect)                                    │
-│ --verify, --no-verify  Verify after flashing? (default: True)                          │
-│ --repl, --no-repl      After flashing/verify start REPL with mpremote to see the       │
-│                        output of the device? (default: True)                           │
-│ -v, --verbosity        Verbosity level; e.g.: -v, -vv, -vvv, etc. (repeatable)         │
-╰────────────────────────────────────────────────────────────────────────────────────────╯
+╭─ options ────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│ -h, --help             show this help message and exit                                                               │
+│ --port {None}|STR      Port used for esptool and mpremote, e.g.: "/dev/ttyUSB0" or "/dev/ttyACM0" etc. Leave empty   │
+│                        for autodetection (default: None)                                                             │
+│ --address STR          Address (default: 0x0)                                                                        │
+│ --flash-size STR       Flash Size (default: detect)                                                                  │
+│ --verify, --no-verify  Verify after flashing? (default: True)                                                        │
+│ --repl, --no-repl      After flashing/verify start REPL with mpremote to see the output of the device? (default:     │
+│                        True)                                                                                         │
+│ -v, --verbosity        Verbosity level; e.g.: -v, -vv, -vvv, etc. (repeatable)                                       │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
 ```
 [comment]: <> (✂✂✂ auto generated flash end ✂✂✂)
 
@@ -182,23 +167,18 @@ https://docs.micropythonos.com/os-development/installing-on-esp32/
 
 [comment]: <> (✂✂✂ auto generated run-desktop start ✂✂✂)
 ```
-usage: mposcli run-desktop [-h] [--heapsize INT] [--script {None}|STR] [--binary
-{None}|STR] [-v]
+usage: mposcli run-desktop [-h] [--heapsize INT] [--script {None}|STR] [--binary {None}|STR] [-v]
 
-Run MicroPythonOS on desktop. see: https://docs.micropythonos.com/getting-
-started/running/#running-on-desktop
+Run MicroPythonOS on desktop. see: https://docs.micropythonos.com/getting-started/running/#running-on-desktop
 
-╭─ options ──────────────────────────────────────────────────────────────────────────────╮
-│ -h, --help           show this help message and exit                                   │
-│ --heapsize INT       Heap size in MB (default: 8, same as PSRAM on many ESP32-S3       │
-│                      boards) (default: 8)                                              │
-│ --script {None}|STR  Script file (.py) or app name to run. If omitted, starts          │
-│                      normally. (default: None)                                         │
-│ --binary {None}|STR  Optional name of the binary to start. If omitted, shows a file    │
-│                      chooser to select one from the lvgl_micropython build directory.  │
-│                      (default: None)                                                   │
-│ -v, --verbosity      Verbosity level; e.g.: -v, -vv, -vvv, etc. (repeatable)           │
-╰────────────────────────────────────────────────────────────────────────────────────────╯
+╭─ options ────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│ -h, --help           show this help message and exit                                                                 │
+│ --heapsize INT       Heap size in MB (default: 8, same as PSRAM on many ESP32-S3 boards) (default: 8)                │
+│ --script {None}|STR  Script file (.py) or app name to run. If omitted, starts normally. (default: None)              │
+│ --binary {None}|STR  Optional name of the binary to start. If omitted, shows a file chooser to select one from the   │
+│                      lvgl_micropython build directory. (default: None)                                               │
+│ -v, --verbosity      Verbosity level; e.g.: -v, -vv, -vvv, etc. (repeatable)                                         │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
 ```
 [comment]: <> (✂✂✂ auto generated run-desktop end ✂✂✂)
 
@@ -210,8 +190,8 @@ started/running/#running-on-desktop
 ```
 usage: mposcli shell [-h] [--reset | --no-reset] [-v]
 
-Start a REPL shell connected to the device using mpremote. Optional reset before starting
-the REPL. The goal it to try to get a REPL in a loop until it works.
+Start a REPL shell connected to the device using mpremote. Optional reset before starting the REPL. The goal it to try
+to get a REPL in a loop until it works.
 
 ╭─ options ────────────────────────────────────────────────────────────────────────╮
 │ -h, --help           show this help message and exit                             │
@@ -231,23 +211,20 @@ the REPL. The goal it to try to get a REPL in a loop until it works.
 ```
 usage: mposcli update [-h] [UPDATE OPTIONS]
 
-Update MicroPythonOS repository. Assume that there is a "origin" and/or "upstream" remote
-configured. Will also ask if you want to update the submodules as well, which is
-recommended.
+Update MicroPythonOS repository. Assume that there is a "origin" and/or "upstream" remote configured. Will also ask if
+you want to update the submodules as well, which is recommended.
 
-╭─ options ──────────────────────────────────────────────────────────────────────────────╮
-│ -h, --help       show this help message and exit                                       │
-│ --cleanup, --no-cleanup                                                                │
-│                  Cleanup unnecessary files and optimize the local repository, too?     │
-│                  (default: True)                                                       │
-│ --shallow-clone, --no-shallow-clone                                                    │
-│                  Submodules only a shallow clone with --depth=1? (default: True)       │
-│ --reset-submodules, --no-reset-submodules                                              │
-│                  Drop and recreate all submodules? (Takes a while) (default: False)    │
-│ --jobs INT       git submodule update --jobs argument, i.e. how many submodules to     │
-│                  update in parallel (default: 16)                                      │
-│ -v, --verbosity  Verbosity level; e.g.: -v, -vv, -vvv, etc. (repeatable)               │
-╰────────────────────────────────────────────────────────────────────────────────────────╯
+╭─ options ───────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│ -h, --help       show this help message and exit                                                                    │
+│ --cleanup, --no-cleanup                                                                                             │
+│                  Cleanup unnecessary files and optimize the local repository, too? (default: True)                  │
+│ --shallow-clone, --no-shallow-clone                                                                                 │
+│                  Submodules only a shallow clone with --depth=1? (default: True)                                    │
+│ --reset-submodules, --no-reset-submodules                                                                           │
+│                  Drop and recreate all submodules? (Takes a while) (default: False)                                 │
+│ --jobs INT       git submodule update --jobs argument, i.e. how many submodules to update in parallel (default: 16) │
+│ -v, --verbosity  Verbosity level; e.g.: -v, -vv, -vvv, etc. (repeatable)                                            │
+╰─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
 ```
 [comment]: <> (✂✂✂ auto generated update end ✂✂✂)
 
@@ -261,23 +238,20 @@ recommended.
 ```
 usage: mposcli update-submodules [-h] [UPDATE-SUBMODULES OPTIONS]
 
-Updates MicroPythonOS git submodules only. Use "mposcli update" to update the main
-repository and optionally the submodules as well. see: https://docs.micropythonos.com/os-
-development/linux/#optional-updating-the-code
+Updates MicroPythonOS git submodules only. Use "mposcli update" to update the main repository and optionally the
+submodules as well. see: https://docs.micropythonos.com/os-development/linux/#optional-updating-the-code
 
-╭─ options ──────────────────────────────────────────────────────────────────────────────╮
-│ -h, --help       show this help message and exit                                       │
-│ --cleanup, --no-cleanup                                                                │
-│                  Cleanup unnecessary files and optimize the local repository, too?     │
-│                  (default: True)                                                       │
-│ --shallow-clone, --no-shallow-clone                                                    │
-│                  Submodules only a shallow clone with --depth=1? (default: True)       │
-│ --reset-submodules, --no-reset-submodules                                              │
-│                  Drop and recreate all submodules? (Takes a while) (default: False)    │
-│ --jobs INT       git submodule update --jobs argument, i.e. how many submodules to     │
-│                  update in parallel (default: 16)                                      │
-│ -v, --verbosity  Verbosity level; e.g.: -v, -vv, -vvv, etc. (repeatable)               │
-╰────────────────────────────────────────────────────────────────────────────────────────╯
+╭─ options ───────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│ -h, --help       show this help message and exit                                                                    │
+│ --cleanup, --no-cleanup                                                                                             │
+│                  Cleanup unnecessary files and optimize the local repository, too? (default: True)                  │
+│ --shallow-clone, --no-shallow-clone                                                                                 │
+│                  Submodules only a shallow clone with --depth=1? (default: True)                                    │
+│ --reset-submodules, --no-reset-submodules                                                                           │
+│                  Drop and recreate all submodules? (Takes a while) (default: False)                                 │
+│ --jobs INT       git submodule update --jobs argument, i.e. how many submodules to update in parallel (default: 16) │
+│ -v, --verbosity  Verbosity level; e.g.: -v, -vv, -vvv, etc. (repeatable)                                            │
+╰─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
 ```
 [comment]: <> (✂✂✂ auto generated update-submodules end ✂✂✂)
 
@@ -306,38 +280,37 @@ A virtual environment will be created/updated automatically.
 
 [comment]: <> (✂✂✂ auto generated dev help start ✂✂✂)
 ```
-usage: ./dev-cli.py [-h] {coverage,install,lint,mypy,nox,pip-audit,publish,shell-
-completion,test,update,update-readme-history,update-test-snapshot-files,version}
+usage: ./dev-cli.py [-h] {coverage,install,lint,mypy,nox,pip-audit,publish,shell-completion,test,update,update-readme-
+history,update-test-snapshot-files,version}
 
 
 
-╭─ options ──────────────────────────────────────────────────────────────────────────────╮
-│ -h, --help     show this help message and exit                                         │
-╰────────────────────────────────────────────────────────────────────────────────────────╯
-╭─ subcommands ──────────────────────────────────────────────────────────────────────────╮
-│ (required)                                                                             │
-│   • coverage   Run tests and show coverage report.                                     │
-│   • install    Install requirements and 'mposcli' via pip as editable.                 │
-│   • lint       Check/fix code style by run: "ruff check --fix"                         │
-│   • mypy       Run Mypy (configured in pyproject.toml)                                 │
-│   • nox        Run nox                                                                 │
-│   • pip-audit  Run pip-audit check against current requirements files                  │
-│   • publish    Build and upload this project to PyPi                                   │
-│   • shell-completion                                                                   │
-│                Setup shell completion for this CLI (Currently only for bash shell)     │
-│   • test       Run unittests                                                           │
-│   • update     Update dependencies (uv.lock) and git pre-commit hooks                  │
-│   • update-readme-history                                                              │
-│                Update project history base on git commits/tags in README.md Will be    │
-│                exited with 1 if the README.md was updated otherwise with 0.            │
-│                                                                                        │
-│                Also, callable via e.g.:                                                │
-│                    python -m cli_base update-readme-history -v                         │
-│   • update-test-snapshot-files                                                         │
-│                Update all test snapshot files (by remove and recreate all snapshot     │
-│                files)                                                                  │
-│   • version    Print version and exit                                                  │
-╰────────────────────────────────────────────────────────────────────────────────────────╯
+╭─ options ────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│ -h, --help     show this help message and exit                                                                       │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+╭─ subcommands ────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│ (required)                                                                                                           │
+│   • coverage   Run tests and show coverage report.                                                                   │
+│   • install    Install requirements and 'mposcli' via pip as editable.                                               │
+│   • lint       Check/fix code style by run: "ruff check --fix"                                                       │
+│   • mypy       Run Mypy (configured in pyproject.toml)                                                               │
+│   • nox        Run nox                                                                                               │
+│   • pip-audit  Run pip-audit check against current requirements files                                                │
+│   • publish    Build and upload this project to PyPi                                                                 │
+│   • shell-completion                                                                                                 │
+│                Setup shell completion for this CLI (Currently only for bash shell)                                   │
+│   • test       Run unittests                                                                                         │
+│   • update     Update dependencies (uv.lock) and git pre-commit hooks                                                │
+│   • update-readme-history                                                                                            │
+│                Update project history base on git commits/tags in README.md Will be exited with 1 if the README.md   │
+│                was updated otherwise with 0.                                                                         │
+│                                                                                                                      │
+│                Also, callable via e.g.:                                                                              │
+│                    python -m cli_base update-readme-history -v                                                       │
+│   • update-test-snapshot-files                                                                                       │
+│                Update all test snapshot files (by remove and recreate all snapshot files)                            │
+│   • version    Print version and exit                                                                                │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
 ```
 [comment]: <> (✂✂✂ auto generated dev help end ✂✂✂)
 
@@ -347,6 +320,7 @@ completion,test,update,update-readme-history,update-test-snapshot-files,version}
 [comment]: <> (✂✂✂ auto generated history start ✂✂✂)
 
 * [**dev**](https://github.com/jedie/mposcli/compare/v0.8.0...main)
+  * 2026-06-16 - Apply project updates
   * 2026-06-16 - Update requirements
 * [v0.8.0](https://github.com/jedie/mposcli/compare/v0.7.1...v0.8.0)
   * 2026-04-08 - Update build targets
