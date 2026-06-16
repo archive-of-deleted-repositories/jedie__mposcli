@@ -32,7 +32,7 @@ cd ~/MicroPythonOS
 
 [comment]: <> (✂✂✂ auto generated main help start ✂✂✂)
 ```
-usage: mposcli [-h] {build,cp,cp-app,flash,run-desktop,shell,update,update-submodules,version}
+usage: mposcli [-h] {build,cp,cp-app,flash,run,run-desktop,shell,update,update-submodules,version}
 
 
 
@@ -52,6 +52,7 @@ usage: mposcli [-h] {build,cp,cp-app,flash,run-desktop,shell,update,update-submo
 │   • flash              Flash MicroPythonOS to the device. Display a file chooser to select the image to flash. All   │
 │                        lvgl_micropython/build/*.bin files will be shown in the file chooser. see:                    │
 │                        https://docs.micropythonos.com/os-development/installing-on-esp32/                            │
+│   • run                Run a script via "mpremote run": With optional file selection and retry loop.                 │
 │   • run-desktop        Run MicroPythonOS on desktop. see:                                                            │
 │                        https://docs.micropythonos.com/getting-started/running/#running-on-desktop                    │
 │   • shell              Start a REPL shell connected to the device using mpremote. Optional reset before starting the │
@@ -134,6 +135,28 @@ development/installing-on-esp32/
 ╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
 ```
 [comment]: <> (✂✂✂ auto generated cp-app end ✂✂✂)
+
+
+
+## mposcli run
+
+[comment]: <> (✂✂✂ auto generated run start ✂✂✂)
+```
+usage: mposcli run [-h] [{None}|PATH] [--new-file-limit INT] [-v]
+
+Run a script via "mpremote run": With optional file selection and retry loop.
+
+╭─ positional arguments ───────────────────────────────────────────────────────────────────────────────────────────────╮
+│ [{None}|PATH]         Optional file path. If not provided, you can select from the list of the newest modified files │
+│                       in internal_filesystem/lib/mpos. (default: None)                                               │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+╭─ options ────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│ -h, --help            show this help message and exit                                                                │
+│ --new-file-limit INT  How many of the newest files to show in the file chooser? (default: 10)                        │
+│ -v, --verbosity       Verbosity level; e.g.: -v, -vv, -vvv, etc. (repeatable)                                        │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+```
+[comment]: <> (✂✂✂ auto generated run end ✂✂✂)
 
 
 
@@ -319,7 +342,8 @@ history,update-test-snapshot-files,version}
 
 [comment]: <> (✂✂✂ auto generated history start ✂✂✂)
 
-* [**dev**](https://github.com/jedie/mposcli/compare/v0.8.0...main)
+* [v0.9.0](https://github.com/jedie/mposcli/compare/v0.8.0...v0.9.0)
+  * 2026-06-16 - NEW: "run" command to start a script on the device with retry loop
   * 2026-06-16 - Apply project updates
   * 2026-06-16 - Update requirements
 * [v0.8.0](https://github.com/jedie/mposcli/compare/v0.7.1...v0.8.0)

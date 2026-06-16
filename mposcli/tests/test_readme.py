@@ -88,6 +88,7 @@ class ReadmeTestCase(BaseTestCase):
                 'cp',
                 'cp-app',
                 'flash',
+                'run',
                 'run-desktop',
                 'shell',
                 'update',
