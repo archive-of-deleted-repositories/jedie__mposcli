@@ -354,8 +354,9 @@ completion,test,update,update-readme-history,update-test-snapshot-files,version}
 │   • test       Run unittests                                                           │
 │   • update     Update dependencies (uv.lock) and git pre-commit hooks                  │
 │   • update-readme-history                                                              │
-│                Update project history base on git commits/tags in README.md Will be    │
-│                exited with 1 if the README.md was updated otherwise with 0.            │
+│                Update project history base on git commits/tags in README.md            │
+│                                                                                        │
+│                Will be exited with 1 if the README.md was updated otherwise with 0.    │
 │                                                                                        │
 │                Also, callable via e.g.:                                                │
 │                    python -m cli_base update-readme-history -v                         │
@@ -372,6 +373,8 @@ completion,test,update,update-readme-history,update-test-snapshot-files,version}
 
 [comment]: <> (✂✂✂ auto generated history start ✂✂✂)
 
+* [**dev**](https://github.com/jedie/mposcli/compare/v0.9.0...main)
+  * 2026-07-03 - update requirements
 * [v0.9.0](https://github.com/jedie/mposcli/compare/v0.8.0...v0.9.0)
   * 2026-06-16 - fix README
   * 2026-06-16 - NEW: "run" command to start a script on the device with retry loop
@@ -385,12 +388,12 @@ completion,test,update,update-readme-history,update-test-snapshot-files,version}
 * [v0.7.1](https://github.com/jedie/mposcli/compare/v0.7.0...v0.7.1)
   * 2026-03-24 - Warn if non executeable build found
   * 2026-03-24 - Set log level to WARNING as default
-* [v0.7.0](https://github.com/jedie/mposcli/compare/v0.6.0...v0.7.0)
-  * 2026-03-24 - Safe diskspace in mposcli update / update-submodules
-  * 2026-03-22 - Use "retry loop" for copy, too
 
 <details><summary>Expand older history entries ...</summary>
 
+* [v0.7.0](https://github.com/jedie/mposcli/compare/v0.6.0...v0.7.0)
+  * 2026-03-24 - Safe diskspace in mposcli update / update-submodules
+  * 2026-03-22 - Use "retry loop" for copy, too
 * [v0.6.0](https://github.com/jedie/mposcli/compare/v0.5.0...v0.6.0)
   * 2026-03-21 - NEW: "shell" to start the REPL
 * [v0.5.0](https://github.com/jedie/mposcli/compare/v0.4.1...v0.5.0)

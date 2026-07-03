@@ -3,14 +3,11 @@ import textwrap
 from bx_py_utils.auto_doc import assert_readme_block
 from bx_py_utils.path import assert_is_file
 from cli_base.cli_tools.test_utils.assertion import assert_in
-from cli_base.cli_tools.test_utils.rich_test_utils import NoColorEnvRich, invoke
+from cli_base.cli_tools.test_utils.rich_test_utils import BASE_WIDTH, NoColorEnvRich, invoke
 from manageprojects.tests.base import BaseTestCase
 
 from mposcli import constants
 from mposcli.cli_dev import PACKAGE_ROOT
-
-
-BASE_WIDTH = 90
 
 
 def remove_until_usage(text: str) -> str:
